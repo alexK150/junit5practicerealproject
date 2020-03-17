@@ -1,6 +1,7 @@
 package controllers;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,8 +20,11 @@ class IndexControllerTest {
         assertEquals("index", indexController.index());
     }
 
+    @DisplayName("throws expected exception")
     @Test
-    void oupsHandler() {
-        assertTrue("notimplemented".equalsIgnoreCase(indexController.oupsHandler()), () -> "Wrong output");
+    void oopsHandler() {
+        assertThrows(ValueNotFoundException.class, () -> {
+            indexController.oopsHandler();
+        });
     }
 }
