@@ -8,19 +8,19 @@ class PersonTest {
 
     @Test
     void groupAssertionsTest() {
-        Person person = new Person((long) 12, "Alex", "Smith");
+        Person person = new Person(2L, "Alex", "Smith");
 
         assertAll("Test Prop set",
-                () -> assertEquals(person.getFirstName(), "Alex"),
-                () -> assertEquals(person.getLastName(), "Smith"));
+                () -> assertEquals("Alex", person.getFirstName()),
+                () -> assertEquals("Smith", person.getLastName()));
     }
 
     @Test
     void groupAssertionsTestMsgs() {
-        Person person = new Person((long) 13, "Alex", "Smith");
+        Person person = new Person(1L, "Alex", "Smith");
 
         assertAll("Test Prop Set",
-                () -> assertEquals(person.getFirstName(), "Alex", "First Name Failed"),
-                () -> assertEquals(person.getLastName(), "Smith", "Last Name Failed"));
+                () -> assertEquals("Alex", person.getFirstName(), "First Name Failed"),
+                () -> assertEquals("Smith", person.getLastName(), "Last Name Failed"));
     }
 }
