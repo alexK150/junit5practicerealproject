@@ -1,0 +1,4 @@
+String countryName, int val1, int val2
+USA, 1, 1
+EU, 2, 2
+Canada, 3, 3

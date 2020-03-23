@@ -1,8 +1,12 @@
 package model;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import interfaces.ModelTests;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,9 +30,35 @@ class OwnerTest implements ModelTests {
         );
     }
 
-    @ParameterizedTest
+    @DisplayName("ParamTest")
+    @ParameterizedTest(name = "{displayName} - [{index}] {argumentsWithNames}")
     @ValueSource(strings = {"Alex", "Hello", "World"})
-    void paramTest(String val){
+    void paramTest(String val) {
         System.out.println(val);
+    }
+
+    @DisplayName("Enum Test")
+    @ParameterizedTest(name = "{displayName} - [{index}] {argumentsWithNames}")
+    @EnumSource(OwnerType.class)
+    void enumTest(OwnerType type) {
+        System.out.println(type);
+    }
+
+    @DisplayName("Comma Separated Values Test")
+    @ParameterizedTest(name = "{displayName} - [{index}] {argumentsWithNames}")
+    @CsvSource({
+            "Russia, 7, +7",
+            "Ukraine, 38, +38",
+            "Belarus, 8, +8",
+    })
+    void csvTest(String countryName, String val1, String val2) {
+        System.out.println(countryName + ": " + val1 + " " + val2);
+    }
+
+    @DisplayName("Comma Separated Values Test with file")
+    @ParameterizedTest(name = "{displayName} - [{index}] {argumentsWithNames}")
+    @CsvFileSource(resources = "/input.csv", numLinesToSkip = 1)
+    void csvFileTest(String countryName, int val1, int val2) {
+        System.out.println(countryName + ": " + val1 + " " + val2);
     }
 }
