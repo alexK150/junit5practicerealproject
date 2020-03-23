@@ -1,10 +1,11 @@
 package model;
 
 import org.junit.jupiter.api.Test;
+import interfaces.ModelTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class OwnerTest {
+class OwnerTest implements ModelTests {
 
     @Test
     void dependentAssertions() {
