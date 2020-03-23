@@ -2,6 +2,8 @@ package model;
 
 import org.junit.jupiter.api.Test;
 import interfaces.ModelTests;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,5 +24,11 @@ class OwnerTest implements ModelTests {
                         () -> assertEquals("1111-111-11", owner.getTelephone(), "Phone number is wrong")
                 )
         );
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"Alex", "Hello", "World"})
+    void paramTest(String val){
+        System.out.println(val);
     }
 }
